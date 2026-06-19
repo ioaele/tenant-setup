@@ -28,19 +28,19 @@
     @if(accommondations.buildings.length !== 0) {
 
     <p-drawer [(visible)]="visibleLabels" [style]="{ width: '30rem' }">
-         <ng-template #header>
+        <ng-template #header>
             <div class="drawer-header"> Unit Names</div>
         </ng-template>
 
         <label class="label-name">Wards</label> <br>
-         <label class="label2">Label</label>
+        <label class="label2">Label</label>
         <input pInputText class="input-units" [(ngModel)]="accommondations.wardName" autocomplete="off" />
         <br>
         <label class="label-name">Beds</label><br>
-          <label class="label2">Label</label>
+        <label class="label2">Label</label>
         <input pInputText class="input-units" [(ngModel)]="accommondations.bedName" autocomplete="off" />
- <label class="label2">Numbering</label>
-            <p-select class="numbering" [options]="numberings" [(ngModel)]="selectedNumbering" optionLabel="numbering" />
+        <label class="label2">Numbering</label>
+        <p-select class="numbering" [options]="numberings" [(ngModel)]="selectedNumbering" optionLabel="numbering" />
 
     </p-drawer>
     <p-button (click)="visibleLabels = true" styleClass="label" icon="pi pi-tag" />
@@ -51,23 +51,24 @@
     @for(building of accommondations.buildings; track $index; let buildingIndex = $index) {
 
     <div>
-        <div class="buildingBin"> 
-        <h2>{{ building.name }}</h2>
-        <p-button styleClass="bin" severity="secondary" (click)="deleteBuilding(buildingIndex)" icon="pi pi-trash" />
+        <div class="buildingBin">
+            <h2>{{ building.name }}</h2>
+            <p-button styleClass="bin" severity="secondary" (click)="deleteBuilding(buildingIndex)"
+                icon="pi pi-trash" />
         </div>
         <h3>{{ building.floors.length }} Floors</h3>
-            
-   
 
-    @if(building.floors.length === 0) {
-    <p class="NoFloors">No floors yet.</p>
-    }
 
-     </div>
 
-   
-    <div class="card table1" >
-        <p-table [value]="building.floors" [tableStyle]="{ 'min-width': '50rem' ,'float':'left' }">
+        @if(building.floors.length === 0) {
+        <p class="NoFloors">No floors yet.</p>
+        }
+
+    </div>
+
+
+    <div class="card table1">
+        <p-table [value]="building.floors" [tableStyle]="{ 'width': '60rem' }">
             @if(accommondations.buildings[buildingIndex].floors.length !== 0) {
             <ng-template #header>
                 <tr>
@@ -81,7 +82,7 @@
             }
             <ng-template #body let-floor let-floorIndex="rowIndex">
                 <tr>
-                    <td  class="names">Floor {{ floorIndex }}</td>
+                    <td class="names">Floor {{ floorIndex }}</td>
                     <td>
                         <input pInputText class="inputTable" [(ngModel)]="floor.name" autocomplete="off" />
                     </td>
@@ -91,7 +92,8 @@
                     </td>
                     <td>
 
-                        <p-button (click)="makeVisibleRoom(buildingIndex, floorIndex)" styleClass="RoomsAndBeds" label="Rooms & Beds" />
+                        <p-button (click)="makeVisibleRoom(buildingIndex, floorIndex)" styleClass="RoomsAndBeds"
+                            label="Rooms & Beds" />
                     </td>
                     <td>
                         <p-button severity="secondary" icon="pi pi-trash" iconPos="right"
@@ -100,19 +102,20 @@
                 </tr>
             </ng-template>
         </p-table>
-        <p-button styleClass="addFloor"  (click)="AddFloorAndSet1WardAnd1Room(buildingIndex)" label="+ Add Floor" />
+        <p-button styleClass="addFloor" (click)="AddFloorAndSet1WardAnd1Room(buildingIndex)" label="+ Add Floor" />
 
     </div>
- 
+
     }
 
 
     <p-drawer [(visible)]="visibleRooms" position="right" [style]="{ width: '25rem' }">
-         <ng-template #header>
+        <ng-template #header>
             <div class="drawer-header"> Rooms & Beds </div>
         </ng-template>
         @if(visibleRooms) {
-        <p-table [value]="accommondations.buildings[selectedBuildingIndex].floors[selectedFloorIndex].wards" [tableStyle]="{ 'width': '20rem' }">
+        <p-table [value]="accommondations.buildings[selectedBuildingIndex].floors[selectedFloorIndex].wards"
+            [tableStyle]="{ 'width': '20rem' }">
             <ng-template #header>
                 <tr>
                     <th>Ward</th>
@@ -124,7 +127,7 @@
                 <tr>
                     <td class="names">{{ ward.name }}</td>
                     <td>
-                        <input pInputText type="number"  class="inputTableNums"  min="1" [(ngModel)]="ward.roomCount"
+                        <input pInputText type="number" class="inputTableNums" min="1" [(ngModel)]="ward.roomCount"
                             (change)="setRooms(selectedBuildingIndex, selectedFloorIndex, wardIndex)"
                             autocomplete="off" />
                     </td>
@@ -139,8 +142,8 @@
     </p-drawer>
 
     <p-dialog [modal]="true" [(visible)]="visibleBeds" [style]="{ width: '25rem' }">
-           <ng-template #header>
-            <div class="drawer-header">  Beds </div>
+        <ng-template #header>
+            <div class="drawer-header"> Beds </div>
         </ng-template>
 
         @if(visibleBeds) {

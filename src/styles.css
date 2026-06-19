@@ -70,14 +70,14 @@
 .back.p-button {
   margin-left: 590px;
   margin-top: 10px;
-   background: #059aaa !important;
-  border-color: #059aaa !important;
+   background: #d4b19a !important;
+  border-color: #d4b19a !important;
   display: inline;
 }
 
 .back.p-button:hover {
-  background: #059aaa98 !important;
-  border-color: #059aaa98 !important;
+  background: #d4b19a74 !important;
+  border-color: #d4b19a74 !important;
 
 }
 
@@ -113,14 +113,14 @@ color:white !important
 
 .back2.p-button {
   margin-right: 5px;
-  background: #059aaa !important;
-  border-color: #059aaa !important;
+   background: #d4b19a !important;
+  border-color: #d4b19a !important;
   display: inline;
 }
 
 .back2.p-button:hover {
-  background: #059aaa98 !important;
-  border-color: #059aaa98 !important;
+  background: #d4b19a74 !important;
+  border-color: #d4b19a74 !important;
 
 }
 
@@ -188,7 +188,8 @@ display:inline;
 
 .addFloor {
  margin-left: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
+    margin-bottom: 20px;
   background: #4e6596 !important;
   border-color: #4e6596 !important;
   display: block;

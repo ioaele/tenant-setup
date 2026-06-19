@@ -82,11 +82,12 @@ font-size:20px;
   
 }
 
-.table1{
-float:left;
-  display: block;
+.table1 {
+    display: block;
+    clear: both;
+    width: fit-content; 
+    margin: 0 auto;
 }
-
 .buildingBin{
   margin-right: 10px;
 }
