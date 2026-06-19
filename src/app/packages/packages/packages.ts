@@ -2,11 +2,10 @@ import { Component, signal,OnInit } from '@angular/core';
 import { Package } from '../../models/package';
 import { GroupPackages } from '../../models/group-packages';
 import { Router } from '@angular/router';
+import { PackagesService } from '../packages-service';
 
 
-
-
-const ALL_GROUPS: GroupPackages[] = [
+const AllGroups: GroupPackages[] = [
     
   { label: 'Core Dashboard', packages: [{ id: 4, name: 'Dashboard' }]},
   { label: 'MainMenu Core', packages: [
@@ -114,17 +113,34 @@ export class Packages implements OnInit {
 
   groups = signal<GroupPackages[]>([]);
 
-
   selectedPackagesAll: { [label: string]: Package[] } = {};
 
-  constructor(private router: Router) {}
 
+constructor(private router: Router, private packageService: PackagesService) {}
   ngOnInit() {
-    this.groups.set(ALL_GROUPS);
+    this.groups.set(AllGroups);
 
-    ALL_GROUPS.forEach(group => {
+    AllGroups.forEach(group => {
       this.selectedPackagesAll[group.label] = [];
     });
+
+    
+const isSelEmpty = this.packageService.isSelEmpty();
+console.log(isSelEmpty);
+     let SelectedPackages= this.packageService.getSelPacks();
+
+    if(SelectedPackages!=null){
+     console.log('Saved packages from service:', SelectedPackages); // Check 1: is service returning anything?
+
+ if (SelectedPackages && SelectedPackages.length > 0) {
+    AllGroups.forEach(group => {
+      this.selectedPackagesAll[group.label] = group.packages.filter(pack =>
+        SelectedPackages.some(selected => selected.id === pack.id)
+      );
+    });
+  }
+    }
+  console.log('Final selectedPackagesAll:', this.selectedPackagesAll); // Check 3: is the object populated?
   }
 
 
@@ -133,7 +149,7 @@ getAllSelected(): Package[] {
   
   const all = Object.values(this.selectedPackagesAll).flat(); //piannoume ola ta selected packages kai me to flat mpenoun se ena array
 
-  // epidi kapoias ids einai ta idia ta afairoume apo to all1 
+  // epidi kapoias ids einai ta idia ta afairoume apo ola
   return all.filter((pack, index, all) =>
 //gia kathe stixio vlepo poy ksanaiparxei GIA PROTI FORA kai an einai diaforetiko index tote einai duplicate kai to kanoume discard me to filter diaforetika einai 1 and we are keeping it
     index === all.findIndex(p => p.id === pack.id) 
@@ -142,12 +158,17 @@ getAllSelected(): Package[] {
 }
 
   next() {
-    const selected = this.getAllSelected();
-    console.log('Selected packages:', selected);
+   const selected=this.getAllSelected();
+
+   console.log(selected)
+this.packageService.addSPacks(selected)
+console.log(this.packageService.getSelPacks())
     this.router.navigate(['/facilities']);
   }
 
   back() {
+const selected=this.getAllSelected();
+this.packageService.addSPacks(selected)
     this.router.navigate(['/admin']);
   }
 }

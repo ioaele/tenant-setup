@@ -1,21 +1,34 @@
 import { Injectable } from '@angular/core';
-import { SelectedPackages } from '../models/selected-packages';
+import { Package } from '../models/package';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PackagesService {
 
-  pack:SelectedPackages=new SelectedPackages
+  packs:Package[]=[]
+
   
-  addSPack(pack:SelectedPackages){
-  this.pack=pack
+  addSPacks(packs:Package[]){
+  this.packs=packs
   }
   
-  getSelPack():SelectedPackages{
-    return this.pack
+  getSelPacks():Package[] | null{
+    if(this.packs.length===0)
+    return null
+  else
+    return this.packs
+
   
   }
 
+
+  isSelEmpty ():boolean{
+        if(this.packs.length===0)
+    return true
+  else
+    return false
+
+  }
 
 }
