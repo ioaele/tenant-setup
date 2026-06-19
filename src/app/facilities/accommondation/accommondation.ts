@@ -19,11 +19,11 @@ import { Facilities } from '../facilities-service';
 export class Accommondation implements OnInit {
   numberings: Numbering[] = []
   selectedNumbering: Numbering = { numbering: '[1,2,3]', value: 1 }
-  constructor(private router: Router,private accServicee:Facilities) { }
+  constructor(private router: Router, private accServicee: Facilities) { }
   ngOnInit(): void {
     this.BuildingName = "Building" + " " + (this.accommondations.buildings.length + 1);
 
-const acc = this.accServicee.getAcc();
+    const acc = this.accServicee.getAcc();
 
 
     this.numberings = [
@@ -141,15 +141,15 @@ const acc = this.accServicee.getAcc();
 
     this.setRooms(buildingIndex, FirstFloor, FirstWard)
 
-      const FirstRoom =this.accommondations.buildings[buildingIndex].floors[FirstFloor].wards[FirstWard].rooms.length-1;
+    const FirstRoom = this.accommondations.buildings[buildingIndex].floors[FirstFloor].wards[FirstWard].rooms.length - 1;
 
-      this.setBeds (buildingIndex, FirstFloor, FirstWard,FirstRoom)
+    this.setBeds(buildingIndex, FirstFloor, FirstWard, FirstRoom)
 
 
-     console.log(this.accommondations)
+    console.log(this.accommondations)
 
-}
-  
+  }
+
 
 
 
@@ -164,7 +164,7 @@ const acc = this.accServicee.getAcc();
       const roomNumber = (floorIndex + 1) * 100 + (i + 1);  // floor 0:101,102 | floor 1:201,202
       ward.rooms.push(new Room(roomNumber.toString()));
     }
-     console.log(this.accommondations)
+    console.log(this.accommondations)
   }
 
 
@@ -188,7 +188,43 @@ const acc = this.accServicee.getAcc();
 
       }
     }
-     console.log(this.accommondations)
+    console.log(this.accommondations)
+  }
+
+
+  setWardsAndRoomsBeds(buildingIndex: number, floorIndex: number) {
+
+
+
+
+    this.setWards(buildingIndex, floorIndex)
+
+
+    for (let wardNo = 0; wardNo < this.accommondations.buildings[buildingIndex].floors[floorIndex].wards.length; wardNo++) {
+      this.setRooms(buildingIndex, floorIndex, wardNo)
+
+      const FirstRoom = this.accommondations.buildings[buildingIndex].floors[floorIndex].wards[wardNo].rooms.length - 1;
+
+      this.setBeds(buildingIndex, floorIndex, wardNo, FirstRoom)
+
+
+      console.log(this.accommondations)
+    }
+  }
+
+  setRoomsAndBeds(buildingIndex: number, floorIndex: number, wardIndex: number) {
+
+    this.setRooms(buildingIndex, floorIndex, wardIndex);
+
+
+    for (let roomNo = 0; roomNo < this.accommondations.buildings[buildingIndex].floors[floorIndex].wards[wardIndex].rooms.length; roomNo++)
+
+      this.setBeds(buildingIndex, floorIndex, wardIndex, roomNo)
+
+    console.log(this.accommondations)
+
+
+
   }
 
 
@@ -223,9 +259,9 @@ const acc = this.accServicee.getAcc();
           severity: 'success',
           summary: 'Confirmed',
           detail: 'Tenant submitted successfully'
-          
+
         });
-    
+
       },
 
       reject: () => {

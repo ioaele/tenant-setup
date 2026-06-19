@@ -88,7 +88,7 @@
                     </td>
                     <td>
                         <input pInputText type="number" class="inputTableNums" min="1" [(ngModel)]="floor.wardCount"
-                            (change)="setWards(buildingIndex, floorIndex)" autocomplete="off" />
+                            (change)="setWardsAndRoomsBeds(buildingIndex, floorIndex)" autocomplete="off" />
                     </td>
                     <td>
 
@@ -128,7 +128,7 @@
                     <td class="names">{{ ward.name }}</td>
                     <td>
                         <input pInputText type="number" class="inputTableNums" min="1" [(ngModel)]="ward.roomCount"
-                            (change)="setRooms(selectedBuildingIndex, selectedFloorIndex, wardIndex)"
+                            (change)="setRoomsAndBeds(selectedBuildingIndex, selectedFloorIndex, wardIndex)"
                             autocomplete="off" />
                     </td>
                     <td>
