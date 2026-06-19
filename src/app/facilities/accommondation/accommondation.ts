@@ -19,12 +19,13 @@ import { Facilities } from '../facilities-service';
 export class Accommondation implements OnInit {
   numberings: Numbering[] = []
   selectedNumbering: Numbering = { numbering: '[1,2,3]', value: 1 }
-  constructor(private router: Router, private accServicee: Facilities) { }
+  constructor(private router: Router, private accService: Facilities) { }
   ngOnInit(): void {
     this.BuildingName = "Building" + " " + (this.accommondations.buildings.length + 1);
 
-    const acc = this.accServicee.getAcc();
-
+    const acc = this.accService.getAcc();
+    if (acc!=null)
+      this.accommondations=acc
 
     this.numberings = [
       { numbering: '[1,2,3]', value: 1 },
@@ -223,7 +224,7 @@ export class Accommondation implements OnInit {
 
 
   back() {
-    this.accServicee.addAccom(this.accommondations);
+    this.accService.addAccom(this.accommondations);
 
     this.router.navigate(['/packages']);
   }

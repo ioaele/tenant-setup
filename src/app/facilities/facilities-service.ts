@@ -11,7 +11,10 @@ export class Facilities {
   this.acc=acc
   }
   
-  getAcc():AccommondationM{
+  getAcc():AccommondationM |null{
+    if(this.acc===null)
+return null
+      else
     return this.acc
   
   }
