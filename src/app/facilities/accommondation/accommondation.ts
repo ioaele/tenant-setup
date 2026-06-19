@@ -84,17 +84,11 @@ export class Accommondation implements OnInit {
 
   deleteBuilding(buildingIndex: number) {
     this.accommondations.buildings.splice(buildingIndex, 1)
-    let buildingCount = this.accommondations.buildings.length
-    for (let i = 0; i < buildingCount; i++) {
-      let building = this.accommondations.buildings[i]
-      if (building.name === ("Building " + building.id))
-        building.name = "Building " + i
-
-      building.id = i
-    }
+ 
     console.log(this.accommondations)
   }
 
+  //note ti ginete me ta onomata ton buildings. an thesw to default building 1,2 kai diagrapsw to building 1 to building 2 den tha ginei 1. omos otan kanw neo building tha grafei building 2
 
   AddFloor(buildingIndex: number) {
 
@@ -179,7 +173,7 @@ export class Accommondation implements OnInit {
     room.beds = [];
     for (let i = 0; i < room.bedCount; i++) {
       if (this.selectedNumbering.value === 1) {
-        room.beds.push(new Bed(i.toString(), this.accommondations.bedName));
+        room.beds.push(new Bed((i+1).toString(), this.accommondations.bedName));
       }
       else {
         room.beds.push(new Bed(String.fromCharCode(65 + i), this.accommondations.bedName));
