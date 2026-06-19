@@ -1,0 +1,90 @@
+<div class="flex min-h-screen">
+
+  <div class="flex w-full md:w-1/2 items-center justify-center p-10">
+    <div class="w-full max-w-lg">
+
+      <h1 class="text-2xl font-bold mb-1">Company Information</h1>
+      <div class="card flex justify-center configurations ">
+        <p-button (click)="op.toggle($event)" icon="pi pi-cog" styleClass="configurations" size="small"
+          label="Configurations" />
+        <p-popover #op>
+          <div class="popover">
+            <label for="pilotStudy">Pilot's Study</label>
+            <p-toggleswitch [(ngModel)]="pilotsStudy" />
+
+            <br>
+            <label for="patientApp">Patient's app</label>
+            <p-toggleswitch [(ngModel)]=" patientApp" />
+
+            <br>
+            <label for="preRegistration">Pre-Registration</label>
+            <p-toggleswitch [(ngModel)]="preRegistration" />
+
+          </div>
+        </p-popover>
+      </div>
+      <form [formGroup]="tenantInfoForm" (ngSubmit)="next()">
+        <div class="mb-4 fields">
+
+          <p-inputgroup>
+            <p-inputgroup-addon><i class="pi pi-building"></i></p-inputgroup-addon>
+            <input pInputText formControlName="CompanyName" placeholder="Company's Name" class="w-full" />
+          </p-inputgroup>
+          @if (tenantInfoForm.get('CompanyName')?.invalid && tenantInfoForm.get('CompanyName')?.touched) {
+          <small class="warning">Company name is required!</small>
+          }
+        </div>
+
+
+        <div class="mb-4 fields">
+
+          <p-inputgroup>
+            <p-inputgroup-addon><i class="pi pi-at"></i></p-inputgroup-addon>
+            <input type="email" pInputText formControlName="email" placeholder="Email address" class="w-full" />
+          </p-inputgroup>
+          @if (tenantInfoForm.get('email')?.touched) {
+          @if (tenantInfoForm.get('email')?.errors?.['required']) {
+          <small class="warning">Email address is required!</small>
+          } @else if (tenantInfoForm.get('email')?.errors?.['email']) {
+          <small class="warning">Email address is invalid!</small>
+          }
+          }
+        </div>
+
+
+        <div class="mb-4 fields">
+
+          <p-inputgroup>
+            <p-inputgroup-addon><i class="pi pi-phone"></i></p-inputgroup-addon>
+            <input type="text" pInputText formControlName="phone" placeholder="Phone Number" class="w-full" />
+          </p-inputgroup>
+          @if (tenantInfoForm.get('phone')?.errors?.['required'] &&
+          tenantInfoForm.get('phone')?.touched) {
+          <small class="warning">Phone number is required!</small>
+          }
+
+          @if (tenantInfoForm.get('phone')?.errors?.['pattern'] &&
+          tenantInfoForm.get('phone')?.touched) {
+          <small class="warning">Phone number must contain only numbers!</small>
+          }
+        </div>
+
+
+        <div class="mb-6 fields">
+
+          <p-inputgroup>
+            <p-inputgroup-addon><i class="pi pi-image"></i></p-inputgroup-addon>
+            <input type="file" formControlName="logo" class="w-full p-inputtext" /> </p-inputgroup>
+          @if (!tenantInfoForm.get('logo')?.value && tenantInfoForm.get('logo')?.touched) {
+          <small class="warning">Company logo is required!</small>
+          }
+        </div>
+
+        <p-button type="submit" [disabled]="tenantInfoForm.invalid" styleClass="submit" label="Next"> </p-button>
+      </form>
+
+
+
+    </div>
+  </div>
+</div>

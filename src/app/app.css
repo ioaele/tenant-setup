@@ -1,0 +1,17 @@
+.stepper-readonly {
+  pointer-events: none;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff; 
+
+  padding: 12px 24px;
+
+  background-color: #384467;;
+  text-align: center;
+
+
+}

@@ -1,0 +1,30 @@
+h1 {
+  margin-left: 10px;
+  color: #384467 !important;
+  font-weight: 1000;
+    font-size: 40px;
+  display: inline;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.fields {
+  margin: 5px 30px !important;
+  width: 50%;
+}
+
+.warning {
+  color: rgb(169, 14, 14) !important;
+}
+
+
+.configurations {
+  margin-left: 70px;
+  display: inline;
+  padding: 100px;
+
+
+}
+
+.popover {
+  width: 200px;
+}

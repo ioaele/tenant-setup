@@ -1,1 +1,217 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+
+.p-step {
+  color: #6b7280;
+}
+
+.p-step.p-step-active {
+  color: #1d4ed8;
+  font-weight: 500;
+}
+
+
+
+.stepper-readonly .p-step-number {
+  background: #e0f2fe;
+  color: #384467;
+
+}
+
+.p-step.p-step-active .p-step-number {
+  background: #384467;
+  color: #ffffff;
+  border-color: #909bba;
+
+}
+
+.p-stepper-separator {
+
+  background: #dbeafe;
+
+}
+
+.p-stepper-separator {
+  background: #dbeafe !important;
+}
+
+.p-step.p-step-active .p-stepper-separator {
+  background: #181b22 !important;
+}
+
+.p-step.p-step-active .p-step-title {
+  color: #384467 !important;
+  font-weight: 1000;
+}
+
+.submit.p-button {
+  margin-left: 45px;
+  margin-top: 10px;
+  background: #4e6596 !important;
+  border-color: #4e6596 !important;
+  display: inline;
+}
+
+.submit.p-button:hover {
+  background: #4e65969a !important;
+  border-color: #4e65969a !important;
+
+}
+
+.submit.p-button:disabled,
+.submit.p-disabled {
+  background: rgb(197, 206, 226) !important;
+  border-color: rgb(197, 206, 226) !important;
+  color: white !important;
+  display: inline;
+
+}
+
+.back.p-button {
+  margin-left: 590px;
+  margin-top: 10px;
+   background: #059aaa !important;
+  border-color: #059aaa !important;
+  display: inline;
+}
+
+.back.p-button:hover {
+  background: #059aaa98 !important;
+  border-color: #059aaa98 !important;
+
+}
+
+
+.configurations.p-button:hover {
+  background: #4e65969a !important;
+  border-color: #4e65969a !important;
+
+
+}
+
+.configurations.p-button {
+  background: #4e6596 !important;
+  border-color: #4e6596 !important;
+
+}
+
+.submit2.p-button {
+  margin-right: 5px;
+  margin-top: 10px;
+  background: #4e6596 !important;
+  border-color: #4e6596 !important;
+  display: inline;
+  color:white
+}
+
+.submit2.p-button:hover {
+  background: #4e65969a !important;
+  border-color: #4e65969a !important;
+color:white !important
+}
+
+
+.back2.p-button {
+  margin-right: 5px;
+  background: #059aaa !important;
+  border-color: #059aaa !important;
+  display: inline;
+}
+
+.back2.p-button:hover {
+  background: #059aaa98 !important;
+  border-color: #059aaa98 !important;
+
+}
+
+.submit3.p-button {
+  margin-right: 5px;
+  margin-top: 10px;
+  background: #4e965f !important;
+  border-color: #4e965f !important;
+  display: inline;
+  color:white
+}
+
+.submit3.p-button:hover {
+  background: #4e965f9d !important;
+  border-color: #4e965f9d !important;
+color:white !important
+}
+
+.addBuilding {
+ margin-left: 20px;
+  margin-top: 10px;
+  background: #4e6596 !important;
+  border-color: #4e6596 !important;
+  display: inline;
+  color:white
+}
+
+.addBuilding:hover {
+  background: #4e65969a !important;
+  border-color: #4e65969a !important;
+color:white !important
+}
+
+
+
+.add{
+    margin-top:20px ;
+  margin-left:10px ;
+  background: #4e6596 !important;
+  border-color: #4e6596 !important;
+ 
+  color:white
+  }
+
+
+  .label{
+margin-left:10px;
+      background: #809f8d !important;
+  border-color: #809f8d !important;
+  }
+
+    .label:hover{
+  
+      background: #809f8d7d !important;
+  border-color: #809f8d7d !important;
+  }
+
+
+  .bin.p-button{
+    margin-top: 10px;
+margin-left: 20px;
+display:inline;
+}
+
+
+.addFloor {
+ margin-left: 20px;
+  margin-top: 10px;
+  background: #4e6596 !important;
+  border-color: #4e6596 !important;
+  display: block;
+  color:white;
+
+}
+
+.addFloor:hover {
+  background: #4e65969a !important;
+  border-color: #4e65969a !important;
+color:white !important
+}
+
+.RoomsAndBeds.p-button{
+
+  background: #5f7094 !important;
+  border-color: #5f7094 !important;
+    color:white;
+
+}
+
+.RoomsAndBeds.p-button:hover {
+  background: #5f70949a !important;
+  border-color: #5f70949a !important;
+color:white !important
+}

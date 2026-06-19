@@ -1,0 +1,24 @@
+<h1>Available Packages</h1>
+<div class="buttons">
+  <p-button (click)="back()" styleClass="back2" size="small" label="Back"></p-button>
+  <p-button (click)="next()" styleClass="submit2" label="Next"></p-button>
+</div>
+<div class="grid">
+
+  @for (group of groups(); track group.label) {
+
+  <div class="col-12 md:col-4">
+    <div class="card">
+
+      <div class="flex justify-content-between mb-3">
+        <h4>{{ group.label }}</h4>
+      </div>
+
+      <p-listbox [options]="group.packages" [(ngModel)]="selectedPackagesAll[group.label]" [multiple]="true" [checkbox]="true" optionLabel="name" dataKey="id"></p-listbox>
+
+    </div>
+  </div>
+
+  }
+
+</div>
